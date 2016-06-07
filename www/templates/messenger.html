@@ -1,0 +1,32 @@
+<ion-view title="Messenger" hide-back-button="true" id="page10" style="background-color:#DEDEED;">
+    <ion-content padding="true" class="has-header">
+        <ion-list>
+            <ion-item class="item-avatar dark" ui-sref="manageProfile">
+                <img src="img/q4xbxIIlSoWlMTQ6tllU_steve.jpg">
+                <h2dark>User Name</h2dark>
+            </ion-item>
+            <ion-toggle toggle-class="toggle-balanced" ng-checked="true" name="activestatus">Active</ion-toggle>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="">
+            </label>
+            <ion-list>
+                <ion-item class="item-icon-right">user 1
+                    <i class="icon ion-android-person"></i>
+                </ion-item>
+                <ion-item class="item-icon-right">User 2
+                    <i class="icon ion-android-person"></i>
+                </ion-item>
+                <ion-item class="item-icon-right">User 3
+                    <i class="icon ion-android-person"></i>
+                </ion-item>
+            </ion-list>
+        </ion-list>
+        <div class="spacer" style="height: 100px;"></div>
+        <div class="button-bar">
+            <a ui-sref="chat" id="messenger-button14" class="button button-positive  button-block icon ion-android-people"></a>
+            <a ui-sref="groupChat" id="messenger-button18" class="button button-positive  button-block icon ion-ios-people"></a>
+            <a ui-sref="stationChat" id="messenger-button15" class="button button-positive  button-block icon ion-android-car"></a>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,69 @@
+
+<ion-view  view-title="Post Home page">
+  <ion-content ng-controller="postCtrl">
+    <div class="bar bar-subheader">
+					<button class="button icon ion-plus-circled" ui-sref="newPosts">Add a Post</button>
+	</div>
+	 <div class="padding"> </div>
+
+    <ion-list>
+      <ion-item  ng-repeat="post in posts" class="item-icon-right item-remove-animate">
+        <div class="item item-divider"> <div class="padding"> </div></div>
+
+
+				<div class="item item-avatar">
+                <img src="https://www.combustioninstitute.org/resources/icon_member_male.png">
+                <h2>{{post.username}}</h2>
+
+                <p>November 05, 2016</p>
+              </div>
+					<h2>{{post.title}}</h2>
+              <div class="item item-body">
+                <img class="full-image" src="http://thephilanews.s3.amazonaws.com/wp-content/uploads/2011/04/U.S.-Announces-Initiatives-for-Electronic-Vehicles.jpg">
+                <p>
+                {{post.description}} </p>
+                <p>
+                  <a href="#" class="subdued">1 Like</a>
+                  <a href="#" class="subdued">5 Comments</a>
+                </p>
+
+               <button ng-click="" class="ion-thumbsup " ></button> _ <button ng-click="" class="ion-flag"></button>
+
+						 <div ng-controller="postCtrl">
+						 <ion-item  ng-repeat="comment in comments" class="item-icon-right item-remove-animate">
+							<div class="item item-divider"></div>
+
+
+								<div class="item item-avatar">
+
+								<img src="https://www.combustioninstitute.org/resources/icon_member_male.png">
+								<p>{{comment.username}}</p>
+
+								<p>November 05, 2016</p>
+							  </div>
+
+							  <div class="item item-body">
+
+							   {{comment.Comment}}
+
+
+							  </div>
+
+					  </ion-item>
+
+	 </div>
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+   <div class="bar bar-footer ">
+
+              <button id="socialNetwork-button20" class="button button-positive width="100%" button-block" ui-sref="posts">Posts</button>
+            <div> <a ui-sref="chatroomhome" id="socialNetwork-button17" width="10%" class="button button-positive  button-block icon ion-android-chat"></a></div>
+         </div>
+
+ </ion-footer-bar>
+
+
+</ion-view>
