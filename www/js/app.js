@@ -30,6 +30,8 @@ angular.module('app', ['ionic', 'app.controllers',  'app.routes', 'app.services'
 
 .controller('userController', function($scope, $http, $state,$ionicPopup) {
    $scope.postForm = function(title,description){
+	   
+
 		    var messageListRef = new Firebase('https://snev.firebaseio.com/posts');
      var newMessageRef = messageListRef.push();
        newMessageRef.set({ 'title': title, 'description': description ,'image': 'imagelocation', 'username': 'usernamevar' });
@@ -37,7 +39,9 @@ angular.module('app', ['ionic', 'app.controllers',  'app.routes', 'app.services'
 
          $scope.title="";
          $scope.description="";
-		alert("sucessfully posted");
+		 
+		
+	
 
       };
 });

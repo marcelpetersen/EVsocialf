@@ -1,27 +1,31 @@
 <ion-view title="New Post" id="page23" class=" ">
     <ion-content padding="true" scroll="false" class="has-header">
-      <div ng-controller="userController"> 
+      <div ng-controller="userController">
 
 
 
-
+          <h1 style="text-align: center;">Enter Your post here</h1>
         <div class="spacer" style="width: 300px; height: 65px;"></div>
         <form id="newPost-form7" class="list " name="newPostForm" >
             <label class="item item-input " id="newPost-input6" name="Title">
                 <input type="text" placeholder="Title " ng-model="title">
             </label>
             <div class="spacer" style="width: 300px; height: 31px;"></div>
+
+
+
+            sasa
             <label class="item item-input " id="newPost-textarea2" name="Descrip">
                 <span class="input-label"></span><textarea placeholder="Description" ng-model="description"></textarea>
             </label>
             </form><br>
-        
+
         <a href="#" id="newPost-button16" class=" button button-stable button-small button-block ">Attach Image</a>
         <div class="spacer" style="width: 300px; height: 68px;"></div>
-        <button id="newPost-button21" class=" button button-calm  button-block " ng-click="postForm(title,description)" >Publish</button>
+        <button id="newPost-button21" class=" button button-positive  button-block " ng-click="postForm(title,description)" >Publish</button>
         </form>
 
-        
+
         </div>
     </ion-content>
 </ion-view>
