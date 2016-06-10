@@ -1,13 +1,17 @@
 
 <ion-view  view-title="Post Home page">
+
+
+  <div class="bar bar-subheader">
+        <button class="button icon ion-plus-circled" ui-sref="newPosts">Add a Post</button>
+</div>
   <ion-content ng-controller="postCtrl">
-    <div class="bar bar-subheader">
-					<button class="button icon ion-plus-circled" ui-sref="newPosts">Add a Post</button>
-	</div>
+
 	 <div class="padding"> </div>
 
     <ion-list>
       <ion-item  ng-repeat="post in posts" class="item-icon-right item-remove-animate">
+
         <div class="item item-divider"> <div class="padding"> </div></div>
 
 
@@ -16,10 +20,11 @@
                 <h2>{{post.username}}</h2>
 
                 <p>November 05, 2016</p>
-              </div>
-					<h2>{{post.title}}</h2>
+                <h1>{{post.title}}</h1>
+                </div>
+
               <div class="item item-body">
-                <img class="full-image" src="http://thephilanews.s3.amazonaws.com/wp-content/uploads/2011/04/U.S.-Announces-Initiatives-for-Electronic-Vehicles.jpg">
+                <img height="250" width="100" class="full-image" src={{post.image}}>
                 <p>
                 {{post.description}} </p>
                 <p>
@@ -27,43 +32,60 @@
                   <a href="#" class="subdued">5 Comments</a>
                 </p>
 
-               <button ng-click="" class="ion-thumbsup " ></button> _ <button ng-click="" class="ion-flag"></button>
+               <button ng-click="" class="ion-thumbsup " style=" padding: 5px 20px;
+
+  background: #0099CC;
+  border: none;
+  color: white;"></button> .<button ng-click="" class="ion-thumbsdown " style=" padding: 5px 20px;
+
+background: #0099CC;
+border: none;
+color: white;"></button> .<button ng-click="" class="ion-flag" style=" padding: 5px 20px;
+
+background: #0099CC;
+border: none;
+color: white;"></button>
+<p>_</p>
+
 
 						 <div ng-controller="postCtrl">
-						 <ion-item  ng-repeat="comment in comments" class="item-icon-right item-remove-animate">
-							<div class="item item-divider"></div>
-
+						 <!-- <ion-item  ng-repeat="comment in comments" class="item-icon-right "> -->
 
 								<div class="item item-avatar">
+                  <img src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=38096302">
+								<!-- <p>{{comment.username}}</p> -->
+                <p>User 2 says..</p>
 
-								<img src="https://www.combustioninstitute.org/resources/icon_member_male.png">
-								<p>{{comment.username}}</p>
-
-								<p>November 05, 2016</p>
 							  </div>
 
 							  <div class="item item-body">
 
-							   {{comment.Comment}}
+							   <!-- {{comment.Comment}} -->
+                 <p>Manual Transmission because you dont have to worry about programing for shift points or excess weight that you would normally have to deal with.
+</p>
 
 
 							  </div>
 
 					  </ion-item>
 
-	 </div>
-
+				</div>
+			</div>
       </ion-item>
     </ion-list>
 
   </ion-content>
-   <div class="bar bar-footer ">
 
-              <button id="socialNetwork-button20" class="button button-positive width="100%" button-block" ui-sref="posts">Posts</button>
-            <div> <a ui-sref="chatroomhome" id="socialNetwork-button17" width="10%" class="button button-positive  button-block icon ion-android-chat"></a></div>
-         </div>
 
- </ion-footer-bar>
+
+ <ion-footer-bar align-title="left" >
+
+ <div class="button-bar" >
+  <a id="socialNetwork-button20"  class="button button-positive icon ion-clipboard" ui-sref="posts">    Posts</a>
+  <a class="button button-positive icon ion-android-chat " ui-sref="chatroomhome">   chat room</a>
+</div>
+
+</ion-footer-bar>
 
 
 </ion-view>
