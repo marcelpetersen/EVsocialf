@@ -160,12 +160,41 @@ angular.module('app.routes', [])
       url: '/rooms/:roomId',
       templateUrl: '/templates/room.html',
       controller: 'RoomDetailCtrl'
-    });
+    })
 
     // setup an abstract state for the tabs directive
 
     // Each tab has its own nav history stack:
 
+
+    /*---------------ADMIN------------------------*/
+  // .state('adminHomepage', {
+  //   url: '/adminhome',
+  //   templateUrl: 'templates/adminHomepage.html',
+  //   controller: 'adminHomepageCtrl'
+  // })
+
+  //admin user view
+  .state('adminUserView', {
+    url: '/userRecords',
+    templateUrl: 'templates/adminUserView.html',
+    controller: 'adminUserRecordsCtrl'
+  })
+
+  //admin station view
+  .state('adminStationView', {
+    url: '/stationRecords',
+    templateUrl: 'templates/adminStationView.html',
+    controller: 'adminStationRecordsCtrl'
+  })
+  
+  //new add
+  .state('makeAppointment', {
+    url: '/appointment',
+    templateUrl: 'templates/makeAppointment.html',
+    controller: 'makeAppointmentCtrl'
+  })
+/***********------------------------------******************/
 
 
 

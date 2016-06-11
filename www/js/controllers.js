@@ -445,3 +445,58 @@ angular.module('app.controllers', [])
 
 
  //asanka end
+
+/************/
+//view user records
+.controller('adminUserRecordsCtrl', function($scope) {
+
+   var ref = new Firebase('https://snev.firebaseio.com/users');
+     //var ref2 = new Firebase('https://snev.firebaseio.com/comments');
+
+
+        ref.on("value", function(snapshot) {
+          $scope.$apply(function(){
+            $scope.posts = snapshot.val();
+
+          });
+        });
+
+        // ref2.on("value", function(snapshot) {
+        //   $scope.$apply(function(){
+        //     $scope.comments = snapshot.val();
+
+        //   });
+        // });
+ 
+})
+
+//view station records
+.controller('adminStationRecordsCtrl', function($scope) {
+
+    var ref = new Firebase('https://snev.firebaseio.com/Stations_Details');
+     //var ref2 = new Firebase('https://snev.firebaseio.com/comments');
+
+
+        ref.on("value", function(snapshot) {
+          $scope.$apply(function(){
+            $scope.posts = snapshot.val();
+
+          });
+        });
+})
+
+//admin create notice
+.controller('noticeController', function($scope, $http, $state,$ionicPopup) {
+  $scope.noticePostForm = function(topic,date,notice) {
+
+    var messageListRef1 = new Firebase('https://snev.firebaseio.com/notices');
+     var newMessageRef1 = messageListRef1.push();
+       newMessageRef1.set({ 'topic': topic, 'date': date ,'notice': 'notice'  });
+       var path = newMessageRef1.toString();
+
+         $scope.topic="";
+         $scope.date="";
+         $scope.notice="";
+        alert("Successfully added");
+  };
+});
