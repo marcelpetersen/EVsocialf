@@ -1,0 +1,41 @@
+<ion-view title="News page" id="page16">
+    <ion-content padding="true" class="has-header">
+
+
+      <!--test-->
+
+      <h2 style="text-align: center;">Enter Your New Notice here</h2>
+      <div>
+      <label class="item item-input item-stacked-label">
+      <span class="input-label" >Topic</span>
+      <input type="text" placeholder="topic" ng-model="topic">
+      </label>
+      <label class="item item-input item-stacked-label">  
+      <span class="input-label">Date</span>
+      <input type="date" ng-model="date">
+      </label>
+      </div>
+      <div><div class="spacer" style="width: 300px; height: 31px;"></div>
+      <label class="item item-input item-stacked-label">
+      
+      <span class="input-label">Notice</span>
+      <textarea placeholder="notice" ng-model="notice">
+      </textarea>
+      <!-- <div> -->
+      </label>
+      </div>
+
+      </div>
+      <button class="button button-full button-positive" ng-click="noticePostForm(topic,date,notice)">
+      Save
+      </button>
+      <button class="button button-full button-assertive">
+      Clear
+      </button>
+      </div>
+
+    </div>
+
+    </ion-content>
+</ion-view>
+
