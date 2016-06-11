@@ -16,7 +16,146 @@ angular.module('app.controllers', [])
 
 //isuru start
 
-.controller('mapCtrl', function($scope,$cordovaGeolocation,$firebase) {
+.controller('StationCtrl', function($scope,$firebase,$ionicPopup) {
+// Adding new station
+	$scope.station = {};
+
+	$scope.showAlert = function() {
+	    $ionicPopup.alert({
+	        title: 'Add Stations',
+	        template: 'Your location has been saved!!'
+	    });
+	};
+	
+	
+
+	$scope.saveDetails = function(){
+	    var lat = $scope.station.latitude;
+	    var lgt = $scope.station.longitude;
+	    var nme = $scope.station.name;
+		var dsc = $scope.station.desc;
+		var add = $scope.station.address;
+		var cnt = $scope.station.contact;
+		var ema = $scope.station.email;
+		var web = $scope.station.web;
+
+	    var firebaseObj = new Firebase("https://snev.firebaseio.com/Stations_Details");
+	    var fb = $firebase(firebaseObj);
+
+	    fb.$push({
+		    latitude: lat,
+		    longitude: lgt,
+		    name: nme,
+			description:dsc,
+			address:add,
+			contact:cnt,
+			email:ema,
+			website:web,
+			
+		}).then(function(ref) {
+		    $scope.static = {};
+		    $scope.showAlert();
+		}, function(error) {
+		    console.log("Error:", error);
+		});
+
+    
+  	}
+})
+
+
+.directive('addmap', function() {
+    return {
+        restrict: 'A',
+        link:function(scope, element, attrs){
+
+          var zValue = scope.$eval(attrs.zoom);
+          var lat = scope.$eval(attrs.lat);
+          var lng = scope.$eval(attrs.lng);
+
+
+          var myLatlng = new google.maps.LatLng(lat,lng),
+          mapOptions = {
+              zoom: zValue,
+              center: myLatlng,
+			   mapTypeId: google.maps.MapTypeId.ROADMAP
+          },
+          map = new google.maps.Map(element[0],mapOptions),
+          marker = new google.maps.Marker({
+			    position: myLatlng,
+			    map: map,
+				icon: 'img/station.png',
+			    draggable:true
+		  });
+
+		  google.maps.event.addListener(marker, 'dragend', function(evt){
+		    scope.$parent.station.latitude = evt.latLng.lat();
+		    scope.$parent.station.longitude = evt.latLng.lng();
+		    scope.$apply();
+		  });
+
+
+        }
+    };
+})
+	
+.controller('stationDetailCtrl', function($scope,stationData,$ionicPopup) {
+
+	var data = stationData.getProperty();
+		if(data=='')
+		{console.log("Could not get station details");}
+
+            $scope.name=data.name;
+			$scope.description=data.description;
+			$scope.address=data.address;
+			$scope.contact=data.contact;
+			$scope.email=data.email;
+			$scope.website=data.website;
+			
+                        
+		
+		
+	  $scope.call = function () {
+		  if(data.contact=='')
+			  {$ionicPopup.alert({ template: 'contact not provided!!'});}
+			  else
+        window.open('tel:' + data.contact, '_system');
+      };
+
+      $scope.mail = function () {
+		  if(data.email=='')
+			  {$ionicPopup.alert({ template: 'Email not provided!!'});}
+			  else
+				window.open('mailto:' + data.email, '_system');
+      };
+
+      $scope.website = function () {
+		  if(data.website=='')
+			  {$ionicPopup.alert({ template: 'Weblink not provided!!'});}
+		  else
+			window.open(data.website, '_system');
+      };
+	
+	
+ 
+ 
+
+})
+.service('stationData', function () {
+        var property = '';
+
+        return {
+            getProperty: function () {
+                return property;
+            },
+            setProperty: function(value) {
+                property = value;
+            }
+        };
+    })
+
+   
+.controller('mapCtrl', function($scope,$cordovaGeolocation,$firebase,stationData,$location) {
         var options = {timeout: 10000, enableHighAccuracy: true};
 
         $cordovaGeolocation.getCurrentPosition(options).then(function(position){
@@ -25,7 +164,7 @@ angular.module('app.controllers', [])
 
             var mapOptions = {
                 center: latLng,
-                zoom: 10,
+                zoom: 7,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
@@ -38,14 +177,16 @@ angular.module('app.controllers', [])
                 var marker = new google.maps.Marker({
                     map: $scope.map,
                     animation: google.maps.Animation.DROP,
-                    position: latLng
+                    position: latLng,
+					icon: 'img/me.png'
+					
                 });
 
                 var infoWindow = new google.maps.InfoWindow({
                     content: "Here I am!"
                 });
 
-                var firebaseObj = new Firebase("https://incandescent-torch-1071.firebaseio.com/Stations_Details");
+                var firebaseObj = new Firebase("https://snev.firebaseio.com/Stations_Details");
 
 
                 firebaseObj.on("child_added", function(snapshot, prevChildKey){
@@ -61,7 +202,17 @@ angular.module('app.controllers', [])
                             position: markerPos,
                             icon: 'img/station.png'
                         });
-
+						
+						  
+						
+						
+						 google.maps.event.addListener(stations, 'click', function () {
+							 //var id = snapshot.key();
+							 var data = snapshot.val();
+							 stationData.setProperty(data);
+							 $location.path("/stationDetail");
+						     window.location.assign("#/stationDetail");
+						});
 
 
                 }, function (errorObject) {
@@ -69,8 +220,7 @@ angular.module('app.controllers', [])
                 });
 
 
-
-
+					
 
                 google.maps.event.addListener(marker, 'click', function () {
                     infoWindow.open($scope.map, marker);
