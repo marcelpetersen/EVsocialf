@@ -137,6 +137,9 @@ angular.module('app.controllers', [])
 .controller('chargingRecordsCtrl', function($scope) {
 
 })
+.controller('newPostCtrl', function($scope) {
+
+})
 
 
 
@@ -183,6 +186,25 @@ angular.module('app.controllers', [])
 	 var ref2 = new Firebase('https://snev.firebaseio.com/comments');
 
 
+	 $scope.addlike = function() {
+
+	 alert("like button");
+
+	 };
+
+	 $scope.adddislike = function() {
+
+	 alert("disliked button");
+
+	 };
+
+	 $scope.report = function() {
+
+	 alert("report  button");
+
+	 };
+
+
 		ref.on("value", function(snapshot,prevChildKey) {
 		  $scope.$apply(function(){
 			$scope.posts = snapshot.val();
@@ -197,6 +219,9 @@ angular.module('app.controllers', [])
 
 		  });
 		});
+
+
+
 
 })
 
