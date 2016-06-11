@@ -35,6 +35,17 @@ angular.module('app.routes', [])
     templateUrl: 'templates/map.html',
     controller: 'mapCtrl'
   })
+   .state('addStation', {
+    url: '/addStation',
+    templateUrl: 'templates/add_station.html',
+     controller: 'StationCtrl'
+            })
+  
+  .state('stationDetail', {
+    url: '/stationDetail',
+    templateUrl: 'templates/stationDetail.html',
+    controller: 'stationDetailCtrl'
+  })
 
   .state('socialNetwork', {
     url: '/socialnetwork',

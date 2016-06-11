@@ -1,0 +1,48 @@
+<ion-view title="Add Stations">
+    <ion-content>
+
+        <div>
+            <div id="addmap" lat="6.9271" lng="79.8612" zoom="10" addmap>
+
+            </div>
+			
+
+            <div width="80%" class="list list-inset" style="margin-left:10%;margin-right:10%;">
+				 <label class="item item-input">
+					<input type="text" ng-model="station.name" placeholder="Station Name">
+				 </label>
+				 <div class="spacer" style="width: 283px; height: 10px;"></div>
+				
+				 <label class="item item-input">
+					<textarea  ng-model="station.desc" placeholder="Description"></textarea>
+				 </label>
+				 <div class="spacer" style="width: 283px; height: 10px;"></div>
+				
+				 <label class="item item-input">
+					<input type="text" ng-model="station.address" placeholder="Address">
+				 </label>
+				 <div class="spacer" style="width: 283px; height: 10px;"></div>
+				
+				 <label class="item item-input">
+					<input type="text" ng-model="station.contact" placeholder="Contact">
+				 </label>
+				 <div class="spacer" style="width: 283px; height: 10px;"></div>
+				 
+					<label class="item item-input">
+				 <input type="text" ng-model="station.email" placeholder="Email">
+				 </label>
+				 <div class="spacer" style="width: 283px; height: 10px;"></div>
+				 
+				 <label class="item item-input">
+					<input type="text" ng-model="station.web" placeholder="Web">
+				 </label>
+				 
+
+                <button class="button button-full button-positive" ng-click="saveDetails()">
+                    Save
+                </button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

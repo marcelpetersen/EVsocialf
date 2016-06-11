@@ -1,0 +1,73 @@
+<ion-view>
+  <ion-nav-title>Details</ion-nav-title>
+     <ion-content padding="true" style="background: url(img/daLkLLQeieKJBgrz5kAr_app_background.jpg) no-repeat center;background-size:cover;" class="has-header">
+	 <div class="list card">
+
+  <div class="item item-avatar">
+    <h1 style="color:#CC4545;">{{name}}</h1>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="https://suncountryhighway.com/Content/Layouts/Web/images/carousel/main_feature_ev60.jpg">
+    <p>
+    {{description}}</p>
+	<p>Address : {{address}}
+    </p>
+	<div class="spacer" style="width: 283px; height: 16px;"></div>
+        <p id="page-markdown2" style="color:#CC4545;" class=" "><strong>1</strong>Person on his way</p>
+        <button id="page-button1" class=" button button-balanced  button-inline ">Get Direction</button>
+		<div class="spacer" style="width: 283px; height: 16px;"></div>
+   
+  </div>
+
+</div>
+	
+	
+        <ion-list>
+        <ion-item class="item-divider item-icon-right item-assertive"><b>SET YOUR STATUS </b> <i class="icon ion-toggle-filled"></i></ion-item>
+        <ion-item>
+            <ion-toggle toggle-class="toggle-stable" id="page-toggle1" class=" ">On my way</ion-toggle>
+            <ion-toggle toggle-class="toggle-positive" id="page-toggle2" class=" ">In the queue</ion-toggle>
+            <ion-toggle toggle-class="toggle-energized" id="page-toggle3" class=" ">Charging</ion-toggle>
+            <ion-toggle toggle-class="toggle-balanced" id="page-toggle4" class=" ">Completed</ion-toggle>
+        </ion-item>
+      </ion-list>
+	  <br>
+	 
+
+   
+      
+    
+      <ion-list >
+        <ion-item class="item-divider item-icon-right item-royal"><b>CONTACTS</b> <i class="icon ion-chatboxes"></i></ion-item>
+        <ion-item class="item-icon-right" ng-click="call()">
+          Call us  
+          <i class="icon ion-android-call"></i>
+        </ion-item>
+        <ion-item class="item-icon-right" ng-click="mail()">
+          Send us an e-mail 
+          <i class="icon ion-ios-email"></i>
+        </ion-item> 
+        <ion-item class="item-icon-right" ng-click="website()">
+          Visit our homepage
+          <i class="icon ion-ios-home"></i>
+        </ion-item>
+      </ion-list>
+    </div>
+	
+  </ion-content>
+  <ion-footer-bar class="bar-stable">
+    <div class="buttons">
+      <div class="button button-clear" ng-disabled="loading" ng-click="map()">
+        <i class="icon ion-map"></i> Maps
+      </div>
+    </div>
+    <h1 class="title"></h1>
+    <div class="buttons">
+      <div class="button button-clear" ng-disabled="loading" ng-click="report()">
+        Report
+        <i class="icon ion-android-alert"></i>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>
