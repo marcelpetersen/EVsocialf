@@ -55,10 +55,9 @@
       <img src="http://lorempixel.com/200/200/people">
     </div>
 
-    <form class="form" name="form" ng-submit="form.$valid && addComment()" novalidate>
+    <form class="form" name="form" ng-submit="form.$valid && addComment(comment,post.title)" novalidate>
       <div class="form-row">
-        <textarea
-                  class="input"
+        <textarea class="input"
                   ng-model="comment"
                   placeholder="Add comment..."
                   required></textarea>
@@ -69,8 +68,10 @@
       </div>
     </form><!-- end of new comment form -->
 
+
+
     <!-- load comments -->
-    <!-- Comment - Dummy -->
+
        <div class="comment">
          <!-- Comment Avatar -->
          <div class="comment-avatar">
@@ -79,6 +80,7 @@
 
          <!-- Comment Box -->
          <div class="comment-box">
+
            <div class="comment-text">Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</div>
            <div class="comment-footer">
              <div class="comment-info">
