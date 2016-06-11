@@ -26,8 +26,8 @@ angular.module('app.controllers', [])
 	        template: 'Your location has been saved!!'
 	    });
 	};
-	
-	
+
+
 
 	$scope.saveDetails = function(){
 	    var lat = $scope.station.latitude;
@@ -51,7 +51,7 @@ angular.module('app.controllers', [])
 			contact:cnt,
 			email:ema,
 			website:web,
-			
+
 		}).then(function(ref) {
 		    $scope.static = {};
 		    $scope.showAlert();
@@ -59,7 +59,7 @@ angular.module('app.controllers', [])
 		    console.log("Error:", error);
 		});
 
-    
+
   	}
 })
 
@@ -98,7 +98,7 @@ angular.module('app.controllers', [])
         }
     };
 })
-	
+
 .controller('stationDetailCtrl', function($scope,stationData,$ionicPopup) {
 
 	var data = stationData.getProperty();
@@ -111,10 +111,10 @@ angular.module('app.controllers', [])
 			$scope.contact=data.contact;
 			$scope.email=data.email;
 			$scope.website=data.website;
-			
-                        
-		
-		
+
+
+
+
 	  $scope.call = function () {
 		  if(data.contact=='')
 			  {$ionicPopup.alert({ template: 'contact not provided!!'});}
@@ -135,10 +135,10 @@ angular.module('app.controllers', [])
 		  else
 			window.open(data.website, '_system');
       };
-	
-	
- 
- 
+
+
+
+
 
 })
 .service('stationData', function () {
@@ -154,7 +154,7 @@ angular.module('app.controllers', [])
         };
     })
 
-   
+
 .controller('mapCtrl', function($scope,$cordovaGeolocation,$firebase,stationData,$location) {
         var options = {timeout: 10000, enableHighAccuracy: true};
 
@@ -179,7 +179,7 @@ angular.module('app.controllers', [])
                     animation: google.maps.Animation.DROP,
                     position: latLng,
 					icon: 'img/me.png'
-					
+
                 });
 
                 var infoWindow = new google.maps.InfoWindow({
@@ -202,10 +202,10 @@ angular.module('app.controllers', [])
                             position: markerPos,
                             icon: 'img/station.png'
                         });
-						
-						  
-						
-						
+
+
+
+
 						 google.maps.event.addListener(stations, 'click', function () {
 							 //var id = snapshot.key();
 							 var data = snapshot.val();
@@ -220,7 +220,7 @@ angular.module('app.controllers', [])
                 });
 
 
-					
+
 
                 google.maps.event.addListener(marker, 'click', function () {
                     infoWindow.open($scope.map, marker);
@@ -377,11 +377,46 @@ angular.module('app.controllers', [])
 
 .controller('cmntController', function($scope) {
 
-	$scope.addComment = function() {
+	$scope.addComment = function(comment,title) {
+		var title1=title;
 
-	alert("working");
+
+
+	//get key of child equals to ==title
+	  var ref = new Firebase("https://snev.firebaseio.com/posts");
+	ref.orderByChild("title").equalTo(title1).on("child_added", function(snapshot) {
+	  var value=snapshot.key();
+		alert(value);
+
+		//add comments
+		var messageListRef = new Firebase('https://snev.firebaseio.com/comments');
+	var newMessageRef = messageListRef.push();
+	 newMessageRef.set({ 'title': title1, 'comment':comment  , 'username': 'usernamevar', 'noOfLikes': 0,'noOfDisLikes': 0  });
+	 var path = newMessageRef.toString();
+
+		 $scope.comment="";
+
+	});
+
 
   };
+
+	// $scope.postForm = function(title,description){
+	// 		    var messageListRef = new Firebase('https://snev.firebaseio.com/posts');
+	//      var newMessageRef = messageListRef.push();
+	//        newMessageRef.set({ 'title': title, 'description': description ,'image': 'imagelocation', 'username': 'usernamevar', 'noOfLikes': 0,'noOfDisLikes': 0  });
+	//        var path = newMessageRef.toString();
+	//
+	//          $scope.title="";
+	//          $scope.description="";
+	//   };
+
+
+//get key of child equals to ===
+//   var ref = new Firebase("https://snev.firebaseio.com/posts");
+// ref.orderByChild("username").equalTo(1).on("child_added", function(snapshot) {
+//   console.log(snapshot.key());
+// });
 
 
 
@@ -389,9 +424,23 @@ angular.module('app.controllers', [])
 
 })
 
+//get key of child equals to ===
 
 
 
+
+.controller('myPostCtrl', function($scope){
+
+
+  var ref = new Firebase("https://snev.firebaseio.com/posts");
+  ref.orderByChild("username").equalTo(1).on("child_added", function(snapshot) {
+        $scope.myposts = snapshot.val();
+
+  console.log(snapshot.val());
+  });
+
+
+})
 
 
  //asanka end
