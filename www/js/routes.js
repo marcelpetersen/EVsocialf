@@ -117,7 +117,12 @@ angular.module('app.routes', [])
   .state('newPosts', {
     url: '/newPosts',
     templateUrl: 'templates/newPost.html',
-    controller: 'newPostCtrl'
+    controller: 'userController'
+  })
+  .state('posthistroy', {
+    url: '/posthistroy',
+    templateUrl: 'templates/postHistory.html',
+
   })
 
   .state('chargingRecords', {

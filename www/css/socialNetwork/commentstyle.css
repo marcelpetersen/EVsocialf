@@ -12,6 +12,37 @@ body{
   font-family: "Roboto", "Tahoma", "Arial", sans-serif;,
 }
 
+//like button effect
+.styl{
+
+  text-decoration:none;
+
+
+
+    font-size:38px;
+
+}
+
+.styl{
+  background:#f5f3ef;
+
+      font-size:32px;
+       border: none;
+       padding: 3px 10px;
+  color: #0052cc;
+  transition:all 0.3s;
+}
+.styl:hover{
+    transform: translateY(4px);;
+      font-size:32px;
+  color:red;
+  transition:all 0.3s;
+}
+
+//comment button effect
+
+
+
 .text-right{ text-align: right; }
 
 .comments-app{
@@ -206,4 +237,24 @@ body{
   float: left;
   text-align: right;
   width: 15%;
+}
+
+.commentbtn {
+
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.commentbtn:hover {background-color: #3e8e41}
+
+.commentbtn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

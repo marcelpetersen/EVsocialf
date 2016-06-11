@@ -137,7 +137,7 @@ angular.module('app.controllers', [])
 .controller('chargingRecordsCtrl', function($scope) {
 
 })
-.controller('newPostCtrl', function($scope) {
+.controller('posthistroy', function($scope) {
 
 })
 
