@@ -1,18 +1,13 @@
 
-<ion-view  view-title="Post Home page">
+<ion-view  view-title="My Post History">
 
 
-  <div class="bar bar-subheader">
-        <button class="button icon ion-plus-circled" ui-sref="newPosts" style=" padding: 5px 20px; background: #0099CC; border: none;color: white;">Add a Post</button>
-          <button class="button icon ion-plus-circled" ui-sref="posthistroy" style=" padding: 5px 20px; background: #0099CC; border: none;color: white;">View My Post History</button>
-
-</div>
-  <ion-content ng-controller="postCtrl">
+  <ion-content >
 
 	 <div class="padding"> </div>
 
     <ion-list>
-      <ion-item  ng-repeat="post in posts" class="item-icon-right item-remove-animate">
+      <ion-item   class="item-icon-right item-remove-animate">
 
         <div class="item item-divider"> <div class="padding"> </div></div>
 
@@ -20,10 +15,9 @@
 				<div class="item item-avatar">
                 <img src="https://www.combustioninstitute.org/resources/icon_member_male.png">
                 <h2>{{post.username}}</h2>
-
                 <p>November 05, 2016</p>
                 <h1>{{post.title}}</h1>
-                </div>
+        </div>
 
               <div class="item item-body">
                 <img height="250" width="100" class="full-image" src={{post.image}}>
@@ -34,12 +28,7 @@
                   <a href="#" class="subdued">5 Comments</a>
                 </p>
 
-            <div ng-controller="postCtrl">
-              <button  ng-click=addlike() class="styl ion-thumbsup " ></button>
-              <button  ng-click=adddislike() class="styl ion-thumbsdown " ></button>
-              <button  ng-click=report() class="styl ion-flag " ></button>
 
-            </div>
 
 </div>
 
@@ -49,25 +38,13 @@
 							   <!-- {{comment.Comment}} -->
 
 
-  <div class="comment-form"  ng-controller="cmntController" >    <!-- new comment Form -->
+  <div class="comment-form"  >    <!-- new comment Form -->
     <!-- Comment Avatar -->
     <div class="comment-avatar">
       <img src="http://lorempixel.com/200/200/people">
     </div>
 
-    <form class="form" name="form" ng-submit="form.$valid && addComment()" novalidate>
-      <div class="form-row">
-        <textarea
-                  class="input"
-                  ng-model="comment"
-                  placeholder="Add comment..."
-                  required></textarea>
-      </div>
 
-      <div class="form-row">
-        <input class="commentbtn" type="submit" value="Add Comment">
-      </div>
-    </form><!-- end of new comment form -->
 
     <!-- load comments -->
     <!-- Comment - Dummy -->
