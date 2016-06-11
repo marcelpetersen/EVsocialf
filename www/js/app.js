@@ -27,21 +27,21 @@ angular.module('app', ['ionic', 'app.controllers',  'app.routes', 'app.services'
 
 
 
-
+//adding a post
 .controller('userController', function($scope, $http, $state,$ionicPopup) {
    $scope.postForm = function(title,description){
-	   
+
 
 		    var messageListRef = new Firebase('https://snev.firebaseio.com/posts');
      var newMessageRef = messageListRef.push();
-       newMessageRef.set({ 'title': title, 'description': description ,'image': 'imagelocation', 'username': 'usernamevar' });
+       newMessageRef.set({ 'title': title, 'description': description ,'image': 'imagelocation', 'username': 'usernamevar', 'noOfLikes': 0,'noOfDisLikes': 0  });
        var path = newMessageRef.toString();
 
          $scope.title="";
          $scope.description="";
-		 
-		
-	
+
+
+
 
       };
 });

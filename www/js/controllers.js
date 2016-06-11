@@ -13,30 +13,8 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('postCtrl', function($scope){
-	var ref = new Firebase('https://snev.firebaseio.com/posts');
-	 var ref2 = new Firebase('https://snev.firebaseio.com/comments');
 
-
-		ref.on("value", function(snapshot,prevChildKey) {
-		  $scope.$apply(function(){
-			$scope.posts = snapshot.val();
-			console.log(prevChildKey.key());
-
-		  });
-		});
-
-		ref2.on("value", function(snapshot) {
-		  $scope.$apply(function(){
-			$scope.comments = snapshot.val();
-
-		  });
-		});
-
-
-
-})
-
+//isuru start
 
 .controller('mapCtrl', function($scope,$cordovaGeolocation,$firebase) {
         var options = {timeout: 10000, enableHighAccuracy: true};
@@ -106,6 +84,7 @@ angular.module('app.controllers', [])
         });
 
 })
+//isuru end
 
 .controller('socialNetworkCtrl', function($scope) {
 
@@ -159,19 +138,9 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('postsCtrl', function($scope) {
-
-})
-
-.controller('newPostCtrl', function($scope) {
-
-   // $scope.postForm(title,description){
-
-   //  }
 
 
-})
-
+ //asanaka  start
 .controller('RoomsListCtrl', function($scope, $ionicPopup, RoomFactory) {
   $scope.rooms = RoomFactory.allRooms;
 
@@ -208,13 +177,42 @@ angular.module('app.controllers', [])
   };
 })
 
-.controller('HomeCtrl', function($scope) {
+
+.controller('postCtrl', function($scope){
+	var ref = new Firebase('https://snev.firebaseio.com/posts');
+	 var ref2 = new Firebase('https://snev.firebaseio.com/comments');
+
+
+		ref.on("value", function(snapshot,prevChildKey) {
+		  $scope.$apply(function(){
+			$scope.posts = snapshot.val();
+			console.log(prevChildKey.key());
+
+		  });
+		});
+
+		ref2.on("value", function(snapshot) {
+		  $scope.$apply(function(){
+			$scope.comments = snapshot.val();
+
+		  });
+		});
+
+})
+
+.controller('cmntController', function($scope) {
+
+	$scope.addComment = function() {
+
+	alert("working");
+
+  };
+
 
 
 
 
 })
- //asanaka start
 
 
 

@@ -32,7 +32,7 @@
                   <a href="#" class="subdued">5 Comments</a>
                 </p>
 
-               <button ng-click="" class="ion-thumbsup " style=" padding: 5px 20px;
+               <button  ng-click="addlike() class="ion-thumbsup " style=" padding: 5px 20px;
 
   background: #0099CC;
   border: none;
@@ -58,11 +58,70 @@ color: white;"></button>
 
 							  </div>
 
+                <!-- Loading comment and adding a comment -->
+                  <div>
+
+                    </div
+
+
 							  <div class="item item-body">
 
 							   <!-- {{comment.Comment}} -->
                  <p>Manual Transmission because you dont have to worry about programing for shift points or excess weight that you would normally have to deal with.
-</p>
+                  </p>
+
+
+  <div class="comment-form"  ng-controller="cmntController" >    <!-- new comment Form -->
+    <!-- Comment Avatar -->
+    <div class="comment-avatar">
+      <img src="http://lorempixel.com/200/200/people">
+    </div>
+
+    <form class="form" name="form" ng-submit="form.$valid && addComment()" novalidate>
+      <div class="form-row">
+        <textarea
+                  class="input"
+                  ng-model="cmntController.comment.text"
+                  placeholder="Add comment..."
+                  required></textarea>
+      </div>
+
+      <div class="form-row">
+        <input type="submit" value="Add Comment">
+      </div>
+    </form><!-- end of new comment form -->
+
+    <!-- load comments -->
+    <!-- Comment - Dummy -->
+       <div class="comment">
+         <!-- Comment Avatar -->
+         <div class="comment-avatar">
+           <img src="http://lorempixel.com/200/200/people">
+         </div>
+
+         <!-- Comment Box -->
+         <div class="comment-box">
+           <div class="comment-text">Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</div>
+           <div class="comment-footer">
+             <div class="comment-info">
+               <span class="comment-author">
+                 <a href="mailto:ximme13@somedomain.io">Ximme</a>
+               </span>
+               <span class="comment-date">Jan 31, 1986 11:32:04 PM</span>
+             </div>
+
+             <div class="comment-actions">
+               <a href="#">Reply</a>
+             </div>
+           </div>
+         </div>
+       </div> <!-- end of load comments -->
+
+
+  </div>  <!-- End of comment div -->
+
+
+
 
 
 							  </div>
@@ -89,3 +148,6 @@ color: white;"></button>
 
 
 </ion-view>
+
+
+ <link rel="stylesheet" href="css/socialNetwork/commentstyle.css">    <!-- comment css -->
