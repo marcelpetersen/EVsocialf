@@ -40,7 +40,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/add_station.html',
      controller: 'StationCtrl'
             })
-  
+
   .state('stationDetail', {
     url: '/stationDetail',
     templateUrl: 'templates/stationDetail.html',
@@ -146,12 +146,12 @@ angular.module('app.routes', [])
 
 
   //asanka chat
-  .state('chatroomhome', {
+  .state('rooms', {
       url: '/chatroomhome',
       templateUrl: '/templates/home1.html',
-      controller: 'HomeCtrl'
+
     })
-    .state('rooms', {
+    .state('chatroomhome', {
       url: '/rooms',
       templateUrl: '/templates/rooms.html',
       controller: 'RoomsListCtrl'

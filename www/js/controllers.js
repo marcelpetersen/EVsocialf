@@ -40,8 +40,9 @@ angular.module('app.controllers', [])
 		var web = $scope.station.web;
 
 	    var firebaseObj = new Firebase("https://snev.firebaseio.com/Stations_Details");
+	    var fb = $firebase(firebaseObj);
 
-	    firebaseObj.push({
+	    fb.$push({
 		    latitude: lat,
 		    longitude: lgt,
 		    name: nme,
@@ -386,7 +387,6 @@ angular.module('app.controllers', [])
 	ref.orderByChild("title").equalTo(title1).on("child_added", function(snapshot) {
 	  var value=snapshot.key();
 		alert(value);
-
 		//add comments
 		var messageListRef = new Firebase('https://snev.firebaseio.com/comments');
 	var newMessageRef = messageListRef.push();
@@ -394,6 +394,8 @@ angular.module('app.controllers', [])
 	 var path = newMessageRef.toString();
 
 		 $scope.comment="";
+
+
 
 	});
 
