@@ -461,6 +461,7 @@ angular.module('app.controllers', [])
 
 	 var alertPopup = $ionicPopup.alert({
 			template: 'Successfully commented'
+
 	 	});
 		 		$scope.comment="";
 

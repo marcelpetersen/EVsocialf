@@ -1,0 +1,64 @@
+
+<ion-view  view-title="My Post History">
+
+
+  <ion-content ng-controller="mypostCtrl">
+
+	 <div class="padding"> </div>
+
+    <ion-list>
+      <ion-item  ng-repeat="post in myposts" class="item-icon-right item-remove-animate">
+
+        <div class="item item-divider"> <div class="padding"> </div></div>
+
+
+				<div class="item item-avatar">
+                <img src="https://www.combustioninstitute.org/resources/icon_member_male.png">
+                <h2>{{post.username}}</h2>
+
+                <p>November 05, 2016</p>
+                <h1></h1>
+                </div>
+
+              <div class="item item-body">
+                <img height="250" width="100" class="full-image" src={{post.image}}>
+                <p>
+                {{post.description}} </p>
+                <p>
+                  <a href="#" class="subdued">{{post.noOfLikes}} Like</a>
+                  <a href="#" class="subdued">5 Comments</a>
+                </p>
+
+            <div ng-controller="postCtrl">
+              <button  ng-click=addlike(post.title) class="styl ion-thumbsup " ></button>
+              <button  ng-click=adddislike(post.title) class="styl ion-thumbsdown " ></button>
+              <button  ng-click=report(post.title) class="styl ion-flag " ></button>
+
+            </div>
+
+          </div>
+
+					  </ion-item>
+
+				</div>
+			</div>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+
+ <ion-footer-bar align-title="left" >
+
+ <div class="button-bar" >
+  <a id="socialNetwork-button20"  class="button button-positive icon ion-clipboard" ui-sref="posts">    Posts</a>
+  <a class="button button-positive icon ion-android-chat " ui-sref="chatroomhome">   chat room</a>
+</div>
+
+</ion-footer-bar>
+
+
+</ion-view>
+
+
+ <link rel="stylesheet" href="css/socialNetwork/commentstyle.css">    <!-- comment css -->
