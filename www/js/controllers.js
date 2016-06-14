@@ -404,19 +404,14 @@ angular.module('app.controllers', [])
 		 					 var data = snapshot.val();
 		 					 var noofl=data.noOfDisLikes;
 
-
-		 									 var alertPopup = $ionicPopup.alert({
+					 var alertPopup = $ionicPopup.alert({
 		 											template: noofl,
-
-
-		 									 });
+					 });
 		 									 var postsref = new Firebase('https://snev.firebaseio.com/posts');
-
 
 		 													 // Modify the 'first' and 'last' children, but leave other data at fredNameRef unchanged
 		 													 postsref.child(value).update({ noOfDisLikes: noofl+1});
-
-		 					 });
+	 });
 
 	 };
 
@@ -424,7 +419,7 @@ angular.module('app.controllers', [])
 		ref.on("value", function(snapshot,prevChildKey) {
 		  $scope.$apply(function(){
 			$scope.posts = snapshot.val();
-			//console.log(prevChildKey.key());
+			console.log(prevChildKey.key());
 
 		  });
 		});
@@ -441,25 +436,15 @@ angular.module('app.controllers', [])
 //post controller
 .controller('mypostCtrl', function($scope,$rootScope,$ionicPopup){
 
-
-
 	var ref = new Firebase('https://snev.firebaseio.com/posts');
 
 		ref.orderByChild("username").equalTo(1).on("value", function(snapshot,prevChildKey) {
 		  $scope.$apply(function(){
 			$scope.myposts = snapshot.val();
-			console.log(snapshot.key());
+			console.log(prevChildKey.key());
 
 		  });
 		});
-		
-		  $scope.updatePost = function (title,description) {
-			//  var ref2 = new Firebase('https://snev.firebaseio.com/posts');
-			//   ref2.orderByChild("username").equalTo(1).update({'title': title,'description':description});
-		
-			  
-		  alert(title);
-      };
 
 })
 
@@ -519,48 +504,69 @@ angular.module('app.controllers', [])
   };
 })
 
+//************************************************************************************
 
+
+.controller('newselect', function($scope,$rootScope,$ionicPopup,$location,$window) {
+
+	$scope.setSelectedPost = function(title1) {
+
+    window$localStorage.$reset();
+  //$rootScope.postt = title1;
+  window.localStorage.setItem("settitle",title1);
+
+	// var SelectdP=$rootScope.postt;
+
+
+    	};
+  })
+
+
+  //post controller
+  .controller('getSelectedpost', function($scope,$rootScope,$ionicPopup,$window){
+
+	var SelectdP=window.localStorage.getItem("settitle");
+  alert(SelectdP);
+
+  	var ref = new Firebase('https://snev.firebaseio.com/posts');
+
+  		ref.orderByChild("title").equalTo(SelectdP).on("value", function(snapshot,prevChildKey) {
+  		  $scope.$apply(function(){
+  			$scope.myposts = snapshot.val();
+  			console.log(prevChildKey.key());
+
+  		  });
+  		});
+
+  })
+
+//
+// //getSelectedpost
+// .controller('getSelectedpost', function($scope,$rootScope,$ionicPopup,$location) {
+//
+// 	var SelectdP=$rootScope.postt;
+// 	var ref = new Firebase('https://snev.firebaseio.com/posts');
+//
+// 		ref.orderByChild("title").equalTo(SelectdP).on("value", function(snapshot,prevChildKey) {
+// 		  $scope.$apply(function(){
+// 			$scope.selctdPost = snapshot.val();
+// 			console.log(prevChildKey.key());
+//
+// 		  });
+// 		});
+//
+//
+// })
+
+
+
+
+/******************************************************************************************
 
 
  //asanka end
 
 /************/
-//Make Appointment
- .controller ('makeAppointmentCtrl' , function($scope, $http, $state,$ionicPopup) {
-	$scope.makeAppointmentForm = function(cname, tele, vRegNum, station) {
-		var makeAppoRef1 = new Firebase('https://snev.firebaseio.com/make_apointments');
-		var makeAppoRef1 = makeAppoRef1.push();
-		
-		//pass the data to DB ---------------------------------------------------------------
-     var noticeID = makeAppoRef1.key();
-       makeAppoRef1.set({ 'cname': cname,   'tele': tele , 'vRegNum': vRegNum});
-       var path = makeAppoRef1.toString();
-
-		//alert successfully add
-		var alertPopup = $ionicPopup.alert({
-		title: 'Successful! <i class="ion-checkmark-round"></i>',
-		template:'You have Successfuly added the notice' 
-		});
-
-         $scope.cname="";
-			
-         $scope.tele="";
-		 $scope.vRegNum="";
-		 $scope.date="";
-			
-
-	}
-		//Clear the fields.------------------------------------------------
-		$scope.makeAppointmentForm2 = function(cname, tele, vRegNum) {
-  		$scope.cname="";
-			
-         $scope.tele="";
-		 $scope.vRegNum="";
-		 $scope.date="";
-		};
- })
-
-
 //view user records
 .controller('adminUserRecordsCtrl', function($scope) {
 
