@@ -40,7 +40,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/add_station.html',
      controller: 'StationCtrl'
             })
-  
+
   .state('stationDetail', {
     url: '/stationDetail',
     templateUrl: 'templates/stationDetail.html',
@@ -146,12 +146,12 @@ angular.module('app.routes', [])
 
 
   //asanka chat
-  .state('chatroomhome', {
+  .state('rooms', {
       url: '/chatroomhome',
       templateUrl: '/templates/home1.html',
-      controller: 'HomeCtrl'
+
     })
-    .state('rooms', {
+    .state('chatroomhome', {
       url: '/rooms',
       templateUrl: '/templates/rooms.html',
       controller: 'RoomsListCtrl'
@@ -160,12 +160,41 @@ angular.module('app.routes', [])
       url: '/rooms/:roomId',
       templateUrl: '/templates/room.html',
       controller: 'RoomDetailCtrl'
-    });
+    })
 
     // setup an abstract state for the tabs directive
 
     // Each tab has its own nav history stack:
 
+
+    /*---------------ADMIN------------------------*/
+  // .state('adminHomepage', {
+  //   url: '/adminhome',
+  //   templateUrl: 'templates/adminHomepage.html',
+  //   controller: 'adminHomepageCtrl'
+  // })
+
+  //admin user view
+  .state('adminUserView', {
+    url: '/userRecords',
+    templateUrl: 'templates/adminUserView.html',
+    controller: 'adminUserRecordsCtrl'
+  })
+
+  //admin station view
+  .state('adminStationView', {
+    url: '/stationRecords',
+    templateUrl: 'templates/adminStationView.html',
+    controller: 'adminStationRecordsCtrl'
+  })
+  
+  //new add
+  .state('makeAppointment', {
+    url: '/appointment',
+    templateUrl: 'templates/makeAppointment.html',
+    controller: 'makeAppointmentCtrl'
+  })
+/***********------------------------------******************/
 
 
 

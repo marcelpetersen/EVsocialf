@@ -1,0 +1,21 @@
+<ion-view title="Users" id="ad_user_page">
+    <!-- <ion-content padding="true" class="has-header"> -->
+    <ion-content ng-controller="adminUserRecordsCtrl">
+    <ion-list>
+    <ion-item  ng-repeat="post in posts" class="item-icon-right item-remove-animate">
+        <div class="item item-divider"> <div class="padding"> </div></div>
+        <div class="item item-avatar">
+        <h2>User Details</h2>
+        <br>
+        <h2>Email : {{post.email}}</h2>
+        <h2>ID : {{post.id}}</h2>
+        <h2>Registered Date : {{post.registered_in}}</h2>
+        <!-- <h2>{{post.gravatar}}</h2> -->
+        <div><button class="button button-assertive" ng-click = "showAlert()">Delete</button></div>
+  
+        </div>
+
+     </ion-item>
+     </ion-list>
+    </ion-content>
+</ion-view>

@@ -30,14 +30,14 @@
                 <p>
                 {{post.description}} </p>
                 <p>
-                  <a href="#" class="subdued">1 Like</a>
+                  <a href="#" class="subdued">{{post.noOfLikes}} Like</a>
                   <a href="#" class="subdued">5 Comments</a>
                 </p>
 
             <div ng-controller="postCtrl">
-              <button  ng-click=addlike() class="styl ion-thumbsup " ></button>
-              <button  ng-click=adddislike() class="styl ion-thumbsdown " ></button>
-              <button  ng-click=report() class="styl ion-flag " ></button>
+              <button  ng-click=addlike(post.title) class="styl ion-thumbsup " ></button>
+              <button  ng-click=adddislike(post.title) class="styl ion-thumbsdown " ></button>
+              <button  ng-click=report(post.title) class="styl ion-flag " ></button>
 
             </div>
 
@@ -55,7 +55,7 @@
       <img src="http://lorempixel.com/200/200/people">
     </div>
 
-    <form class="form" name="form" ng-submit="form.$valid && addComment(comment,post.title)" novalidate>
+    <form class="form" name="form" ng-submit="form.$valid && addComment(comment,post.title) && showAlert()" novalidate>
       <div class="form-row">
         <textarea class="input"
                   ng-model="comment"
