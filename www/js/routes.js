@@ -157,6 +157,12 @@ angular.module('app.routes', [])
       templateUrl: '/templates/room.html',
       controller: 'RoomDetailCtrl'
     })
+	
+	 .state('editpost', {
+      url: '/editpost',
+      templateUrl: '/templates/editpost.html'
+      //controller: 'RoomDetailCtrl'
+    })
 
     // setup an abstract state for the tabs directive
 

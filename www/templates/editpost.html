@@ -11,31 +11,42 @@
 
         <div class="item item-divider"> <div class="padding"> </div></div>
 
-
+			<form name="myForm" novalidate>
 				<div class="item item-avatar">
                 <img src="https://www.combustioninstitute.org/resources/icon_member_male.png">
                 <h2>{{post.username}}</h2>
 
                 <p>November 05, 2016</p>
-                <h1></h1>
+				 <label class="item item-input item-stacked-label">  
+				<span class="input-label">Title :</span>
+				<input type="text" name="title" ng-model="title" placeholder="{{post.title}}" required>
+				<span style="color:red" ng-show="myForm.title.$error.required">Title is required</span>
+				</label>
                 </div>
 
               <div class="item item-body">
                 <img height="250" width="100" class="full-image" src={{post.image}}>
-                <p>
-                {{post.description}} </p>
-                <p>
+				 <label class="item item-input item-stacked-label">  
+				<span class="input-label">Description :</span>
+				<textarea  name="description" ng-model="desc" placeholder="{{post.description}}" required></textarea>
+				<span style="color:red" ng-show="myForm.description.$error.required">Description is required</span>
+				</label>
+				</br>
+                
                   <a href="#" class="subdued">{{post.noOfLikes}} Like</a>
                   <a href="#" class="subdued">5 Comments</a>
                 </p>
+                <!-- //like dislike report -->
+                <div ng-controller="postCtrl">
+                  <button  ng-click=addlike(post.title) class="styl ion-thumbsup " ></button>
+                  <button  ng-click=adddislike(post.title) class="styl ion-thumbsdown " ></button>
+                  <button  ng-click=report(post.title) class="styl ion-flag " ></button>
 
-            <div ng-controller="postCtrl">
-              <button  ng-click=addlike(post.title) class="styl ion-thumbsup " ></button>
-              <button  ng-click=adddislike(post.title) class="styl ion-thumbsdown " ></button>
-              <button  ng-click=report(post.title) class="styl ion-flag " ></button>
-
-            </div>
-
+                </div>
+				   <button class="button button-full button-positive" ng-disabled="myForm.$invalid" ng-click="savePost()">
+                    Save
+                </button>
+			</form>
           </div>
 
 					  </ion-item>
@@ -46,7 +57,6 @@
     </ion-list>
 
   </ion-content>
-
 
  <ion-footer-bar align-title="left" >
 
