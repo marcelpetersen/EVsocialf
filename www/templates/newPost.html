@@ -8,8 +8,9 @@
         <div class="spacer" style="width: 300px; height: 65px;"></div>
         <form id="newPost-form7" class="list " name="newPostForm" >
             <label class="item item-input " id="newPost-input6" name="Title">
-                <input type="text" placeholder="Title " ng-model="title">
+                <input type="text" placeholder="Title " name="title" ng-model="title" required>
             </label>
+			<span style="color:red" ng-show="newPostForm.title.$error.required">Title is required</span>
             <div class="spacer" style="width: 300px; height: 31px;"></div>
 <!-- test upload -->
 
@@ -18,13 +19,14 @@
 
 
             <label class="item item-input " id="newPost-textarea2" name="Descrip">
-                <span class="input-label"></span><textarea placeholder="Description" ng-model="description"></textarea>
+                <textarea placeholder="Description" ng-model="description" name="description" required></textarea>
             </label>
+			<span style="color:red" ng-show="newPostForm.description.$error.required">Description is required</span>
             </form><br>
 
         <a href="#" id="newPost-button16" class=" button button-stable button-small button-block ">Attach Image</a>
         <div class="spacer" style="width: 300px; height: 68px;"></div>
-        <button id="newPost-button21" class=" button button-positive  button-block " ng-click="postForm(title,description)" >Publish</button>
+        <button id="newPost-button21" class=" button button-positive  button-block " ng-disabled="newPostForm.$invalid" ng-click="postForm(title,description)" >Publish</button>
         </form>
 
 
