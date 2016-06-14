@@ -39,10 +39,9 @@ angular.module('app.controllers', [])
 		var ema = $scope.station.email;
 		var web = $scope.station.web;
 
-	    var firebaseObj = new Firebase("https://snev.firebaseio.com/Stations_Details");
-	    var fb = $firebase(firebaseObj);
+	    var fb = new Firebase("https://snev.firebaseio.com/Stations_Details");
 
-	    fb.$push({
+	    fb.push({
 		    latitude: lat,
 		    longitude: lgt,
 		    name: nme,
