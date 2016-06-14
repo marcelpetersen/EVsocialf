@@ -360,8 +360,7 @@ angular.module('app.controllers', [])
 
 														// Modify the 'first' and 'last' children, but leave other data at fredNameRef unchanged
 														postsref.child(value).update({ noOfLikes: noofl+1});
-
-						});
+									});
 
 
 					};
@@ -476,7 +475,6 @@ angular.module('app.controllers', [])
 .controller('mypostCtrl', function($scope,$rootScope,$ionicPopup){
 		var username= $rootScope.test;
 
-		alert('TEST user');
 
 	var ref = new Firebase('https://snev.firebaseio.com/posts');
 	 var ref2 = new Firebase('https://snev.firebaseio.com/comments');
@@ -495,7 +493,7 @@ angular.module('app.controllers', [])
 
  //asanka end
 
-/************/
+
 //view user records
 .controller('adminUserRecordsCtrl', function($scope) {
 
