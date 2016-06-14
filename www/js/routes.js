@@ -194,11 +194,11 @@ angular.module('app.routes', [])
     controller: 'adminStationRecordsCtrl'
   })
 
-  //new add
+//make appointment
   .state('makeAppointment', {
-    url: '/appointment',
-    templateUrl: 'templates/makeAppointment.html',
-    controller: 'makeAppointmentCtrl'
+	url: '/makeAppointment',
+	templateUrl: 'templates/makeAppointment.html',
+	controller: 'makeAppointmentCtrl'
   })
 
 
@@ -215,6 +215,8 @@ angular.module('app.routes', [])
     templateUrl: 'templates/viewNewsPage.html',
     controller: 'viewNewsPageCtrl'
   })
+  
+  
 
 	 .state('editpost', {
           url: '/editpost',
