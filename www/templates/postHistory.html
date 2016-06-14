@@ -28,13 +28,14 @@
                   <a href="#" class="subdued">{{post.noOfLikes}} Like</a>
                   <a href="#" class="subdued">5 Comments</a>
                 </p>
-                <!-- like dislike report -->
-            <div ng-controller="postCtrl">
-              <button  ng-click=addlike(post.title) class="styl ion-thumbsup " ></button>
-              <button  ng-click=adddislike(post.title) class="styl ion-thumbsdown " ></button>
-              <button  ng-click=report(post.title) class="styl ion-flag " ></button>
-                <button    >EDIT POST</button>
-            </div>
+                <!-- //like dislike report -->
+                <div ng-controller="postCtrl">
+                  <button  ng-click=addlike(post.title) class="styl ion-thumbsup " ></button>
+                  <button  ng-click=adddislike(post.title) class="styl ion-thumbsdown " ></button>
+                  <button  ng-click=report(post.title) class="styl ion-flag " ></button>
+
+                </div>
+                    <button  >Edit Post</button>
 
           </div>
 
