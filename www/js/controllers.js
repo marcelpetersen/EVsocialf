@@ -476,7 +476,6 @@ angular.module('app.controllers', [])
 .controller('mypostCtrl', function($scope,$rootScope,$ionicPopup){
 		var username= $rootScope.test;
 
-		alert('TEST user');
 
 	var ref = new Firebase('https://snev.firebaseio.com/posts');
 	 var ref2 = new Firebase('https://snev.firebaseio.com/comments');
