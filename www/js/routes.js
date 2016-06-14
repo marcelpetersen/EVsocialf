@@ -89,11 +89,7 @@ angular.module('app.routes', [])
     controller: 'manageProfileCtrl'
   })
 
-  .state('newsPage', {
-    url: '/newspage',
-    templateUrl: 'templates/newsPage.html',
-    controller: 'newsPageCtrl'
-  })
+
 
   .state('page', {
     url: '/page17',
@@ -194,9 +190,21 @@ angular.module('app.routes', [])
     templateUrl: 'templates/makeAppointment.html',
     controller: 'makeAppointmentCtrl'
   })
-/***********------------------------------******************/
 
 
+ //admin make new notices
+  .state('newsPage', {
+    url: '/newspage',
+    templateUrl: 'templates/newsPage.html',
+    controller: 'newsPageCtrl'
+  })
+
+  //User view notices
+  .state('viewNewsPage', {
+    url: '/viewnewspage',
+    templateUrl: 'templates/viewNewsPage.html',
+    controller: 'viewNewsPageCtrl'
+  })
 
 
 
