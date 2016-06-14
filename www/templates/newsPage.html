@@ -1,26 +1,43 @@
 <ion-view title="News page" id="page16">
     <ion-content padding="true" class="has-header">
 
+    <div ng-controller="noticeController">
 
-      <!--test-->
+     <h2 style="text-align: center;">Enter Your New Notice here</h2>
+      
+      <form name="newNotice" novalidate>
+      <div>
+        <label class="item item-input item-stacked-label">
+        <span class="input-label" >Topic</span>
+        <input type="text" placeholder="topic" name="topic" ng-model="topic" required >
+        <span style="color:red" ng-show="newNotice.topic.$error.required">*required</span>
+        </label>
+      
+        <!-- <label class="item item-input item-stacked-label">  
+        <span class="input-label">Date</span>
+        <input type="date" ng-model='date'>
+        </label> -->
+      </div>
+      <div>
+      <div class="spacer" style="width: 300px; height: 31px;"></div>
+        <label class="item item-input item-stacked-label">
+        <span class="input-label">Notice</span>
+        <textarea placeholder="notice" ng-model="notice" name="notice" required>
+        </textarea>
+		<span style="color:red" ng-show="newNotice.topic.$error.required">*required</span>
+      <!-- <div> -->
+        </label>
+      </div>
 
-      <body ng-app="app" ng-controller="ListCtrl">
-      <ion-header-bar class="top">
-        <h1 class="title">Items</h1>
-        <button class="button button-icon ion-plus" ng-click="addItem()"></button>
-      </ion-header-bar>
-
-      <ion-content>
-        <ion-list>
-          <ion-item ng-repeat="item in items" ng-class="{purchased: item.status == 'purchased'}">
-            {{item.name}}
-            <ion-option-button class="button-royal" ng-click="purchaseItem(item)">
-              <i class="icon ion-checkmark"></i>
-            </ion-option-button>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-      </body>
+      <!-- </div> -->
+        <button class="button button-full button-positive" ng-disabled="newNotice.$invalid" ng-click="noticePostForm(topic,date,notice)">
+        Save
+        </button>
+        <button class="button button-full button-assertive" ng-click="noticePostForm2(topic,date,notice)">
+        Clear
+        </button>
+      </div>    
+      </form>      
 
     </ion-content>
 </ion-view>

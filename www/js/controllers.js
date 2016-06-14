@@ -481,20 +481,61 @@ angular.module('app.controllers', [])
 
           });
         });
+
+    var fredRef = new Firebase('https://samplechat.firebaseio-demo.com/Stations_Details');
+	$scope.remove = function(index){
+  $scope.posts.splice(index, 1)
+};
 })
 
-//admin create notice
+//user view notices------------------------------------------------------------------
+.controller('viewNewsPageCtrl', function($scope) {
+	 var viewNewsRef1 = new Firebase('https://snev.firebaseio.com/notice');
+
+	 	viewNewsRef1.on("value", function(snapshot) {
+           $scope.$apply(function(){
+             $scope.posts = snapshot.val();
+
+           });
+         });
+})
+//--------------------------------------------------------------------------------------
+
+//admin create notice----------------------------------------------------------------------
 .controller('noticeController', function($scope, $http, $state,$ionicPopup) {
   $scope.noticePostForm = function(topic,date,notice) {
 
-    var messageListRef1 = new Firebase('https://snev.firebaseio.com/notices');
-     var newMessageRef1 = messageListRef1.push();
-       newMessageRef1.set({ 'topic': topic, 'date': date ,'notice': 'notice'  });
-       var path = newMessageRef1.toString();
+    var noticeRef1 = new Firebase('https://snev.firebaseio.com/notice');
+     var noticeRef1 = noticeRef1.push();
+
+
+//pass the data to DB ---------------------------------------------------------------
+     var noticeID = noticeRef1.key();
+       noticeRef1.set({ 'topic': topic,   'date':date ,'notice': notice  });
+       var path = noticeRef1.toString();
+
+
+   var alertPopup = $ionicPopup.alert({
+     title: 'Successful! <i class="ion-checkmark-round"></i>',
+     template:'You have Successfuly added the notice' 
+  	 });
+
 
          $scope.topic="";
          $scope.date="";
          $scope.notice="";
-        alert("Successfully added");
+
+//----------------------------------------------------------------------------------
+
+  };
+//End create notice-------------------------------------------------------------------------
+
+//Cleare the fields.------------------------------------------------
+  $scope.noticePostForm2 = function(topic,date,notice) {
+  		$scope.topic="";
+         $scope.date="";
+         $scope.notice="";
   };
 });
+
+//------------------------------------------------------------------
