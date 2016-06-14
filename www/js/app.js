@@ -33,10 +33,11 @@ angular.module('app', ['ionic', 'app.controllers',  'app.routes', 'app.services'
    $scope.postForm = function(title,description){
       $rootScope.test = "TEST user";
       	 var username= $rootScope.test;
+         var imagelocation='https://startupjuncture.com/wp-content/uploads/2016/02/test-in-de-auto-selfie-social-charging.jpeg';
 
 		    var messageListRef = new Firebase('https://snev.firebaseio.com/posts');
      var newMessageRef = messageListRef.push();
-       newMessageRef.set({ 'title': title, 'description': description ,'image': 'imagelocation', 'username':username, 'noOfLikes': 0,'noOfDisLikes': 0 ,'noOfReports': 0  });
+       newMessageRef.set({ 'title': title, 'description': description ,'image':'https://startupjuncture.com/wp-content/uploads/2016/02/test-in-de-auto-selfie-social-charging.jpeg', 'username':username, 'noOfLikes': 0,'noOfDisLikes': 0 ,'noOfReports': 0  });
        var path = newMessageRef.toString();
 
          $scope.title="";

@@ -2,12 +2,12 @@
 <ion-view  view-title="My Post History">
 
 
-  <ion-content >
+  <ion-content ng-controller="mypostCtrl">
 
 	 <div class="padding"> </div>
 
-    <ion-list ng-controller="myPostCtrl">
-      <ion-item   class="item-icon-right item-remove-animate">
+    <ion-list>
+      <ion-item  ng-repeat="post in myposts" class="item-icon-right item-remove-animate">
 
         <div class="item item-divider"> <div class="padding"> </div></div>
 
@@ -15,69 +15,28 @@
 				<div class="item item-avatar">
                 <img src="https://www.combustioninstitute.org/resources/icon_member_male.png">
                 <h2>{{post.username}}</h2>
+
                 <p>November 05, 2016</p>
                 <h1>{{post.title}}</h1>
-        </div>
+                </div>
 
               <div class="item item-body">
                 <img height="250" width="100" class="full-image" src={{post.image}}>
                 <p>
                 {{post.description}} </p>
                 <p>
-                  <a href="#" class="subdued">1 Like</a>
+                  <a href="#" class="subdued">{{post.noOfLikes}} Like</a>
                   <a href="#" class="subdued">5 Comments</a>
                 </p>
 
-              </div>
+            <div ng-controller="postCtrl">
+              <button  ng-click=addlike(post.title) class="styl ion-thumbsup " ></button>
+              <button  ng-click=adddislike(post.title) class="styl ion-thumbsdown " ></button>
+              <button  ng-click=report(post.title) class="styl ion-flag " ></button>
 
+            </div>
 
-  <div class="item item-body">
-
-							   <!-- {{comment.Comment}} -->
-
-
-      <div class="comment-form"  >    <!-- new comment Form -->
-        <!-- Comment Avatar -->
-        <div class="comment-avatar">
-          <img src="http://lorempixel.com/200/200/people">
-        </div>
-
-
-
-    <!-- load comments -->
-    <!-- Comment - Dummy -->
-       <div class="comment">
-         <!-- Comment Avatar -->
-         <div class="comment-avatar">
-           <img src="http://lorempixel.com/200/200/people">
-         </div>
-
-         <!-- Comment Box -->
-         <div class="comment-box">
-           <div class="comment-text">Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</div>
-           <div class="comment-footer">
-             <div class="comment-info">
-               <span class="comment-author">
-                 <a href="mailto:ximme13@somedomain.io">Ximme</a>
-               </span>
-               <span class="comment-date">Jan 31, 1986 11:32:04 PM</span>
-             </div>
-
-             <div class="comment-actions">
-               <a href="#">Reply</a>
-             </div>
-           </div>
-         </div>
-       </div> <!-- end of load comments -->
-
-
-  </div>  <!-- End of comment div -->
-
-
-
-
-
-	  </div>
+          </div>
 
 					  </ion-item>
 
@@ -87,7 +46,6 @@
     </ion-list>
 
   </ion-content>
-
 
 
  <ion-footer-bar align-title="left" >

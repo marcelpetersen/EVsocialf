@@ -331,20 +331,17 @@ angular.module('app.controllers', [])
 })
 
 
+//post controller
 .controller('postCtrl', function($scope,$rootScope,$ionicPopup){
 	var ref = new Firebase('https://snev.firebaseio.com/posts');
 	 var ref2 = new Firebase('https://snev.firebaseio.com/comments');
 
 
-
-
-
-
-	 $scope.addlike = function(title) {
+	 		$scope.addlike = function(title) {
 
 	//  alert("username"+$rootScope.test);
-	 var username= $rootScope.test;
-	 var title1=title;
+	 			var username= $rootScope.test;
+	 			var title1=title;
 
 
 					//get key of child equals to ==title
@@ -367,13 +364,13 @@ angular.module('app.controllers', [])
 						});
 
 
-};
+					};
 
 
-		 $scope.adddislike = function(title) {
+		 $scope.adddislike = function(title1) {
 		 	//  alert("username"+$rootScope.test);
 		 	 var username= $rootScope.test;
-		 	 var title1=title;
+
 
 
 		 					//get key of child equals to ==title
@@ -383,19 +380,14 @@ angular.module('app.controllers', [])
 		 						var data = snapshot.val();
 		 						var noofl=data.noOfDisLikes;
 
-
 		 							      var alertPopup = $ionicPopup.alert({
 		 							         template: noofl
 		 							      });
 		 										var postsref = new Firebase('https://snev.firebaseio.com/posts');
 
-
 		 														// Modify the 'first' and 'last' children, but leave other data at fredNameRef unchanged
 		 														postsref.child(value).update({ noOfDisLikes: noofl+1});
-
 		 						});
-
-
 		 };
 
 
@@ -405,8 +397,6 @@ angular.module('app.controllers', [])
 
 		  //  alert("username"+$rootScope.test);
 		 	var username= $rootScope.test;
-
-
 
 		 				 //get key of child equals to ==title
 		 					 var ref = new Firebase("https://snev.firebaseio.com/posts");
@@ -449,10 +439,9 @@ angular.module('app.controllers', [])
 
 
 
-
 })
 
-.controller('cmntController', function($scope,$rootScope,$ionicPopup) {
+.controller('cmntController', function($scope,$rootScope,$ionicPopup,$location) {
 
 	$scope.addComment = function(comment,title1) {
 
@@ -472,31 +461,36 @@ angular.module('app.controllers', [])
 
 	 var alertPopup = $ionicPopup.alert({
 			template: 'Successfully commented'
-	 });
-
-
+	 	});
 		 		$scope.comment="";
 
-
 		});
-
-
   };
-
 })
 
 
 
 
-.controller('myPostCtrl', function($scope){
+
+//post controller
+.controller('mypostCtrl', function($scope,$rootScope,$ionicPopup){
+		var username= $rootScope.test;
+
+		alert('user is TEST user');
+
+	var ref = new Firebase('https://snev.firebaseio.com/posts');
+	 var ref2 = new Firebase('https://snev.firebaseio.com/comments');
+
+		ref.orderByChild("username").equalTo('TEST user').on("value", function(snapshot,prevChildKey) {
+		  $scope.$apply(function(){
+			$scope.myposts = snapshot.val();
+			console.log(prevChildKey.key());
+
+		  });
+		});
 
 
-  var ref = new Firebase("https://snev.firebaseio.com/posts");
-  ref.orderByChild("username").equalTo(1).on("child_added", function(snapshot) {
-        $scope.myposts = snapshot.val();
 
-  console.log(snapshot.val());
-  });
 
 
 })
@@ -519,7 +513,7 @@ angular.module('app.controllers', [])
           });
         });
 
-      
+
 
 })
 
