@@ -2,10 +2,7 @@
 <ion-view  view-title="Post Home page">
 
 
-  <div class="bar bar-subheader">
-        <button class="button icon ion-plus-circled" ui-sref="newPosts" style=" padding: 5px 20px; background: #0099CC; border: none;color: white;">Add a Post</button>
-          <button class="button icon ion-plus-circled" ui-sref="posthistroy" style=" padding: 5px 20px; background: #0099CC; border: none;color: white;">View My Post History</button>
-</div>
+
   <ion-content ng-controller="postCtrl">
 
 	 <div class="padding"> </div>
@@ -46,8 +43,7 @@
   <div class="item item-body">
 
 							   <!-- {{comment.Comment}} -->
-<button ui-sref="viewpost" style=" padding: 5px 20px; background: #0099CC; border: none;color: white;">View Comments</button>
-
+<button  ui-sref="viewMyComment" >View Comments</button>
 
   <div class="comment-form"  ng-controller="cmntController" >    <!-- new comment Form -->
     <!-- Comment Avatar -->

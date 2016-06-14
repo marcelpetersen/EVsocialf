@@ -157,12 +157,11 @@ angular.module('app.routes', [])
       templateUrl: '/templates/room.html',
       controller: 'RoomDetailCtrl'
     })
-	
-	 .state('editpost', {
-      url: '/editpost',
-      templateUrl: '/templates/editpost.html'
-      //controller: 'RoomDetailCtrl'
-    })
+
+
+    
+
+
 
     // setup an abstract state for the tabs directive
 
@@ -189,7 +188,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/adminStationView.html',
     controller: 'adminStationRecordsCtrl'
   })
-  
+
   //new add
   .state('makeAppointment', {
     url: '/appointment',
@@ -212,6 +211,11 @@ angular.module('app.routes', [])
     controller: 'viewNewsPageCtrl'
   })
 
+	 .state('editpost', {
+          url: '/editpost',
+          templateUrl: '/templates/editpost.html'
+          //controller: 'RoomDetailCtrl'
+        })
 
 
   //
