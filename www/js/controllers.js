@@ -471,6 +471,7 @@ angular.module('app.controllers', [])
 
 
 
+
 //post controller
 .controller('mypostCtrl', function($scope,$rootScope,$ionicPopup){
 		var username= $rootScope.test;
