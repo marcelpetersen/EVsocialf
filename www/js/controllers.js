@@ -360,7 +360,8 @@ angular.module('app.controllers', [])
 
 														// Modify the 'first' and 'last' children, but leave other data at fredNameRef unchanged
 														postsref.child(value).update({ noOfLikes: noofl+1});
-									});
+
+						});
 
 
 					};
@@ -493,7 +494,7 @@ angular.module('app.controllers', [])
 
  //asanka end
 
-
+/************/
 //view user records
 .controller('adminUserRecordsCtrl', function($scope) {
 
