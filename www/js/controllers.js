@@ -511,7 +511,60 @@ angular.module('app.controllers', [])
   };
 })
 
+//************************************************************************************
 
+
+.controller('newselect', function($scope,$rootScope,$ionicPopup,$location) {
+
+	$scope.setSelectedPost = function(title1) {
+  $rootScope.postt = title1;
+	var SelectdP=$rootScope.postt;
+
+alert(SelectdP);
+    	};
+  })
+
+
+  //post controller
+  .controller('getSelectedpost', function($scope,$rootScope,$ionicPopup){
+
+	var SelectdP=$rootScope.postt;
+  alert(SelectdP);
+
+  	var ref = new Firebase('https://snev.firebaseio.com/posts');
+
+  		ref.orderByChild("username").equalTo(1).on("value", function(snapshot,prevChildKey) {
+  		  $scope.$apply(function(){
+  			$scope.myposts = snapshot.val();
+  			console.log(prevChildKey.key());
+
+  		  });
+  		});
+
+  })
+
+//
+// //getSelectedpost
+// .controller('getSelectedpost', function($scope,$rootScope,$ionicPopup,$location) {
+//
+// 	var SelectdP=$rootScope.postt;
+// 	var ref = new Firebase('https://snev.firebaseio.com/posts');
+//
+// 		ref.orderByChild("title").equalTo(SelectdP).on("value", function(snapshot,prevChildKey) {
+// 		  $scope.$apply(function(){
+// 			$scope.selctdPost = snapshot.val();
+// 			console.log(prevChildKey.key());
+//
+// 		  });
+// 		});
+//
+//
+// })
+
+
+
+
+/******************************************************************************************
 
 
  //asanka end
