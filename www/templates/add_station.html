@@ -29,18 +29,25 @@
 				 <div class="spacer" style="width: 283px; height: 10px;"></div>
 				
 				 <label class="item item-input">
-					<input type="text" ng-model="station.contact" placeholder="Contact">
+					<input type="text" name="contact" ng-model="station.contact" placeholder="Contact" ng-minlength="10" 
+					ng-maxlength="10"  required>
 				 </label>
+				 <span style="color:red" ng-show="myForm.contact.$error.required">Telephone no is required</span>
+				 <span style="color:red" ng-show="myForm.contact.$error.minlength || myForm.contact.$error.maxlength ">Phone number should be 10 digits</span>
 				 <div class="spacer" style="width: 283px; height: 10px;"></div>
 				 
 					<label class="item item-input">
-				 <input type="text" ng-model="station.email" placeholder="Email">
+				 <input type="email" ng-model="station.email" name="email" placeholder="Email" required>
 				 </label>
+				 <span style="color:red" ng-show="myForm.email.$error.required">Email is required</span>
+				 <span style="color:red" ng-show="myForm.email.$error.email">Not valid email!</span>
 				 <div class="spacer" style="width: 283px; height: 10px;"></div>
 				 
 				 <label class="item item-input">
-					<input type="text" ng-model="station.web" placeholder="Web">
+					<input type="url" ng-model="station.web" placeholder="Web" name="url" required>
 				 </label>
+				  <span style="color:red" ng-show="myForm.url.$error.required">Required</span>
+				 <span style="color:red" ng-show="myForm.url.$error.url">Not valid url!</span>
 				  
 
                 <button class="button button-full button-positive" ng-disabled="myForm.$invalid" ng-click="saveDetails()">

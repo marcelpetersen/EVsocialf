@@ -424,7 +424,7 @@ angular.module('app.controllers', [])
 		ref.on("value", function(snapshot,prevChildKey) {
 		  $scope.$apply(function(){
 			$scope.posts = snapshot.val();
-			console.log(prevChildKey.key());
+			//console.log(prevChildKey.key());
 
 		  });
 		});
@@ -448,10 +448,18 @@ angular.module('app.controllers', [])
 		ref.orderByChild("username").equalTo(1).on("value", function(snapshot,prevChildKey) {
 		  $scope.$apply(function(){
 			$scope.myposts = snapshot.val();
-			console.log(prevChildKey.key());
+			console.log(snapshot.key());
 
 		  });
 		});
+		
+		  $scope.updatePost = function (title,description) {
+			//  var ref2 = new Firebase('https://snev.firebaseio.com/posts');
+			//   ref2.orderByChild("username").equalTo(1).update({'title': title,'description':description});
+		
+			  
+		  alert(title);
+      };
 
 })
 
