@@ -28,16 +28,16 @@
                 <img height="250" width="100" class="full-image" src={{post.image}}>
 				 <label class="item item-input item-stacked-label">
 				<span class="input-label">Description :</span>
-				<textarea  name="description" ng-model="desc" placeholder="{{post.description}}" required></textarea>
+				<textarea  name="description" ng-model="description" placeholder="{{post.description}}" required></textarea>
 				<span style="color:red" ng-show="myForm.description.$error.required">Description is required</span>
 				</label>
 				</br>
 
-              
+
                 </div>
-				   <button class="button button-full button-positive" ng-disabled="myForm.$invalid"  ng-click="updatePost(title,description)">
-                    UPDATE
-                </button>
+                <div ng-controller="postUpdateCtrl">
+                  <button class="button button-full button-positive" ng-disabled="myForm.$invalid"  ng-click="updatePost(title,description)">  UPDATE   </button>
+                </div>
 			</form>
           </div>
 

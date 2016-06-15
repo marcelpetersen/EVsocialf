@@ -558,6 +558,19 @@ angular.module('app.controllers', [])
 
   })
 
+
+
+.controller('postUpdateCtrl', function($scope,$rootScope,$ionicPopup,$location,$window) {
+
+	$scope.updatePost = function(title1,description) {
+
+alert(description);
+
+  	};
+  })
+
+
+
  //asanka end
 
 /************/
@@ -603,6 +616,12 @@ angular.module('app.controllers', [])
              $scope.posts = snapshot.val();
 
            });
+
+
+              var alertPopup = $ionicPopup.alert({
+              title: 'Successful! <i class="ion-checkmark-round"></i>',
+              template:'You have Successfuly Updated'
+             	 });
          });
 })
 //--------------------------------------------------------------------------------------
@@ -634,6 +653,7 @@ angular.module('app.controllers', [])
 //----------------------------------------------------------------------------------
 
   };
+
 //End create notice-------------------------------------------------------------------------
 
 //Cleare the fields.------------------------------------------------
