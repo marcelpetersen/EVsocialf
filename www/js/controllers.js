@@ -355,7 +355,6 @@ angular.module('app.controllers', [])
 
 	 			var title1=title;
 
-
 					//get key of child equals to ==title
 					  var ref = new Firebase("https://snev.firebaseio.com/posts");
 					  ref.orderByChild("title").equalTo(title1).on("child_added", function(snapshot) {
@@ -364,19 +363,20 @@ angular.module('app.controllers', [])
 						var noofl=data.noOfLikes;
 
 
-            var alertPopup = $ionicPopup.alert({
-              title: 'Successful! <i class="ion-checkmark-round"></i>',
-              template:'You have Successfuly liked the post'
-              });
-										var postsref = new Firebase('https://snev.firebaseio.com/posts');
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Successful! <i class="ion-checkmark-round"></i>',
+                  template:'You have Successfuly liked the post'
+                  });
+
+							var postsref = new Firebase('https://snev.firebaseio.com/posts');
 
 
-												// Modify the 'first' and 'last' children, but leave other data at fredNameRef unchanged
-														postsref.child(value).update({ noOfLikes: noofl+1});
+												// Modify the 'noOfLikes  but leave other data unchanged
+										postsref.child(value).update({ noOfLikes: noofl+1});
 
 						});
 
-};
+          };
 
 
 		 $scope.adddislike = function(title1) {
@@ -404,29 +404,29 @@ angular.module('app.controllers', [])
 
 
      // report a post
-	 $scope.report = function(title1) {
+  	 $scope.report = function(title1) {
 
-//  alert("username"+$rootScope.test);
-		// 	var username= $rootScope.test;
-      var username=window.localStorage.getItem("user");
+  //  alert("username"+$rootScope.test);
+  		// 	var username= $rootScope.test;
+          var username=window.localStorage.getItem("user");
 
-		 				 //get key of child equals to ==title
-		 					 var ref = new Firebase("https://snev.firebaseio.com/posts");
-		 				 ref.orderByChild("title").equalTo(title1).on("child_added", function(snapshot) {
-		 					 var value=snapshot.key();
-		 					 var data = snapshot.val();
-		 					 var noof2=data.noOfReports;
+  		 				 //get key of child equals to ==title
+  		 					 var ref = new Firebase("https://snev.firebaseio.com/posts");
+  		 				   ref.orderByChild("title").equalTo(title1).on("child_added", function(snapshot) {
+  		 					 var value=snapshot.key();
+  		 					 var data = snapshot.val();
+  		 					 var noof2=data.noOfReports;
 
 
-               var alertPopup = $ionicPopup.alert({
-                 title: 'Successful! <i class="ion-checkmark-round"></i>',
-                 template:'You have Successfuly Reported'
-              	 });
-		 									 var postsref = new Firebase('https://snev.firebaseio.com/posts');
-		 									 postsref.child(value).update({ noOfReports: noof2+1});
-	    });
+                   var alertPopup = $ionicPopup.alert({
+                   title: 'Successful! <i class="ion-checkmark-round"></i>',
+                   template:'You have Successfuly Reported'
+                	 });
+  		 									 var postsref = new Firebase('https://snev.firebaseio.com/posts');
+  		 									 postsref.child(value).update({ noOfReports: noof2+1});
+	        });
 
-	  };
+	    };
 
 
 		ref.on("value", function(snapshot,prevChildKey) {
@@ -452,7 +452,7 @@ angular.module('app.controllers', [])
 	var ref = new Firebase('https://snev.firebaseio.com/posts');
   var username=window.localStorage.getItem("user");
 
-		ref.orderByChild("username").equalTo(username).on("value", function(snapshot,prevChildKey) {
+		 ref.orderByChild("username").equalTo(username).on("value", function(snapshot,prevChildKey) {
 		  $scope.$apply(function(){
 			$scope.myposts = snapshot.val();
 	//		console.log(prevChildKey.key());
@@ -475,8 +475,6 @@ angular.module('app.controllers', [])
 
     var username=window.localStorage.getItem("user");
 
-
-
 		//adding  comments
 		var messageListRef = new Firebase('https://snev.firebaseio.com/comments');
 		var newMessageRef = messageListRef.push();
@@ -494,8 +492,10 @@ angular.module('app.controllers', [])
   };
 })
 
+// viewing post
 .controller('viewpostController', function($scope,$rootScope,$ionicPopup,$location) {
 
+//adding a comment
 	$scope.addComment = function(comment,title1) {
 
 	//get key of child equals to ==title
@@ -532,6 +532,7 @@ angular.module('app.controllers', [])
   })
 
 
+
   // get selected post deatils ; load comments and posts
   .controller('getSelectedpost', function($scope,$rootScope,$ionicPopup,$window){
 
@@ -559,12 +560,26 @@ angular.module('app.controllers', [])
   })
 
 
-
+//  update post controller
 .controller('postUpdateCtrl', function($scope,$rootScope,$ionicPopup,$location,$window) {
-
+	var SelectdP=window.localStorage.getItem("settitle");
 	$scope.updatePost = function(title1,description) {
 
-alert(description);
+    var ref = new Firebase('https://snev.firebaseio.com/posts');
+
+
+      ref.orderByChild("title").equalTo(SelectdP).on("child_added", function(snapshot) {
+        var value=snapshot.key();
+
+        	ref.child(value).update({ title: title1});
+
+
+        });
+
+        var alertPopup = $ionicPopup.alert({
+        title: 'Successful! <i class="ion-checkmark-round"></i>',
+        template:'You have Successfuly Updated'
+         });
 
   	};
   })
@@ -573,7 +588,7 @@ alert(description);
 
  //asanka end
 
-/************/
+
 //view user records
 .controller('adminUserRecordsCtrl', function($scope) {
 
@@ -624,9 +639,9 @@ alert(description);
              	 });
          });
 })
-//--------------------------------------------------------------------------------------
 
-//admin create notice----------------------------------------------------------------------
+
+// admin create notice----------------------------------------------------------------------
 .controller('noticeController', function($scope, $http, $state,$ionicPopup) {
   $scope.noticePostForm = function(topic,date,notice) {
 
