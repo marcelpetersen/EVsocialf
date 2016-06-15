@@ -35,8 +35,56 @@
                   <button  ng-click=report(post.title) class="styl ion-flag " ></button>
 
                 </div>
-                    <button  >Edit Post</button>
 
+                <div class="comment-form"  ng-controller="cmntController" >    <!-- new comment Form -->
+                  <!-- Comment Avatar -->
+                  <div class="comment-avatar">
+                    <img src="http://lorempixel.com/200/200/people">
+                  </div>
+
+                    <form class="form" name="form" ng-submit="form.$valid && addComment(comment,post.title) && showAlert()" novalidate>
+                      <div class="form-row">
+                        <textarea class="input"
+                                  ng-model="comment"
+                                  placeholder="Add comment..."
+                                  required></textarea>
+                      </div>
+
+                      <div class="form-row">
+                        <input class="commentbtn" type="submit" value="Add Comment">
+                      </div>
+                    </form><!-- end of new comment form -->
+
+
+                </div>
+
+                <!-- load comments -->
+                  <div  ng-controller="getSelectedpost">
+                   <div class="comment"  ng-repeat="comment in mycomments" class="item-icon-right item-remove-animate">
+                     <!-- Comment Avatar -->
+                     <div class="comment-avatar">
+                       <img src="http://lorempixel.com/200/200/people">
+                     </div>
+
+                     <!-- Comment Box -->
+                     <div class="comment-box">
+
+                       <div class="comment-text">{{comment.comment}}</div>
+                       <div class="comment-footer">
+                         <div class="comment-info">
+                           <span class="comment-author">
+                             <a href="mailto:ximme13@somedomain.io">{{comment.username}}</a>
+                           </span>
+                           <span class="comment-date">Jan 31, 1986 11:32:04 PM</span>
+                         </div>
+
+                         <div class="comment-actions">
+                           <a href="#">Reply</a>
+                         </div>
+                       </div>
+                     </div>
+                   </div> <!-- end of load comments -->
+                </div>
           </div>
 
 					  </ion-item>
@@ -46,6 +94,8 @@
       </ion-item>
     </ion-list>
 
+
+
   </ion-content>
 
  <ion-footer-bar align-title="left" >
@@ -54,6 +104,7 @@
   <a id="socialNetwork-button20"  class="button button-positive icon ion-clipboard" ui-sref="posts">    Posts</a>
   <a class="button button-positive icon ion-android-chat " ui-sref="chatroomhome">   chat room</a>
 </div>
+
 
 </ion-footer-bar>
 

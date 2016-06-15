@@ -5,7 +5,28 @@
   <div class="bar bar-subheader">
         <button class="button icon ion-plus-circled" ui-sref="newPosts" style=" padding: 5px 20px; background: #0099CC; border: none;color: white;">Add a Post</button>
           <button class="button icon ion-plus-circled" ui-sref="posthistroy" style=" padding: 5px 20px; background: #0099CC; border: none;color: white;">View My Post History</button>
+
+
+<div class="bar bar-subheader2"  ng-controller="tempuser" >    <!-- new comment Form -->
+
+
+  <form class="form" name="form" ng-submit="form.$valid && makeTempUser(comment,post.title) && showAlert()" novalidate>
+    <div class="form-row">
+      <textarea class="input"
+                ng-model="comment"
+                placeholder="Enter temporaty user"
+                required></textarea>
+    </div>
+
+    <div class="form-row">
+      <input class="commentbtn" type="submit" value="Enter the user name">
+    </div>
+  </form><!-- end of new comment form -->
+
+</div>  <!-- End of test username div -->
 </div>
+<br>
+
   <ion-content ng-controller="postCtrl">
 
 	 <div class="padding"> </div>
@@ -30,6 +51,8 @@
                 {{post.description}} </p>
                 <p>
                   <a href="#" class="subdued">{{post.noOfLikes}} Like</a>
+                  <a href="#" class="subdued">{{post.noOfDisLikes}} disLike</a>
+                  <a href="#" class="subdued">{{post.noOfReports}} times reported</a>
                   <a href="#" class="subdued">5 Comments</a>
                 </p>
 
@@ -71,40 +94,9 @@
       </div>
     </form><!-- end of new comment form -->
 
-
-
     <!-- load comments -->
 
-       <div class="comment">
-         <!-- Comment Avatar -->
-         <div class="comment-avatar">
-           <img src="http://lorempixel.com/200/200/people">
-         </div>
-
-         <!-- Comment Box -->
-         <div class="comment-box">
-
-           <div class="comment-text">Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</div>
-           <div class="comment-footer">
-             <div class="comment-info">
-               <span class="comment-author">
-                 <a href="mailto:ximme13@somedomain.io">Ximme</a>
-               </span>
-               <span class="comment-date">Jan 31, 1986 11:32:04 PM</span>
-             </div>
-
-             <div class="comment-actions">
-               <a href="#">Reply</a>
-             </div>
-           </div>
-         </div>
-       </div> <!-- end of load comments -->
-
-
   </div>  <!-- End of comment div -->
-
-
-
 
 
 	  </div>

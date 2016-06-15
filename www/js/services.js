@@ -8,6 +8,7 @@
         var ref = new Firebase('https://snev.firebaseio.com/');
         var rooms = $firebaseArray(ref.child('rooms'));
         var messages = $firebaseArray(ref.child('messages'));
+        var username1=window.localStorage.getItem("user");
 
         return {
           allRooms: rooms,
@@ -21,7 +22,9 @@
 
           send: function(newMessage, roomId) {
             return messages.$add({
-              username: 'jkj',
+
+
+              username: username1,
               content: newMessage,
               sentAt: Firebase.ServerValue.TIMESTAMP,
               roomId: roomId
