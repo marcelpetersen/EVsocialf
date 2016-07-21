@@ -28,7 +28,7 @@ angular.module('app', ['ionic', 'app.controllers',  'app.routes', 'app.services'
 
 
 
-//adding a post
+//adding a new post
 .controller('userController', function($scope, $http, $state,$ionicPopup,$rootScope) {
    $scope.postForm = function(title,description){
       // $rootScope.test = "TEST user";
@@ -40,6 +40,11 @@ angular.module('app', ['ionic', 'app.controllers',  'app.routes', 'app.services'
      var newMessageRef = messageListRef.push();
        newMessageRef.set({ 'title': title, 'description': description ,'image':'https://startupjuncture.com/wp-content/uploads/2016/02/test-in-de-auto-selfie-social-charging.jpeg', 'username':username1 , 'noOfLikes': 0,'noOfDisLikes': 0 ,'noOfReports': 0  });
        var path = newMessageRef.toString();
+
+       var alertPopup = $ionicPopup.alert({
+         title: 'Successful! <i class="ion-checkmark-round"></i>',
+         template:'You have Successfuly Created a Post'
+         });
 
          $scope.title="";
          $scope.description="";

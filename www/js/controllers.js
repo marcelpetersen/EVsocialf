@@ -346,7 +346,7 @@ angular.module('app.controllers', [])
 
 
 //post controller
-.controller('postCtrl', function($scope,$rootScope,$ionicPopup){
+.controller('postCtrl', function($scope ,$ionicPopup){
 	var ref = new Firebase('https://snev.firebaseio.com/posts');
 	 var ref2 = new Firebase('https://snev.firebaseio.com/comments');
 
@@ -447,7 +447,7 @@ angular.module('app.controllers', [])
 
 
 //post controller
-.controller('mypostCtrl', function($scope,$rootScope,$ionicPopup){
+.controller('mypostCtrl', function($scope ,$ionicPopup){
 
 	var ref = new Firebase('https://snev.firebaseio.com/posts');
   var username=window.localStorage.getItem("user");
@@ -464,7 +464,7 @@ angular.module('app.controllers', [])
 
 
 
-.controller('cmntController', function($scope,$rootScope,$ionicPopup,$location) {
+.controller('cmntController', function($scope ,$ionicPopup,$location) {
 
 	$scope.addComment = function(comment,title1) {
 
@@ -493,7 +493,7 @@ angular.module('app.controllers', [])
 })
 
 // viewing post
-.controller('viewpostController', function($scope,$rootScope,$ionicPopup,$location) {
+.controller('viewpostController', function($scope ,$ionicPopup,$location) {
 
 //adding a comment
 	$scope.addComment = function(comment,title1) {
@@ -523,7 +523,7 @@ angular.module('app.controllers', [])
 
 
 //get selected post and store
-.controller('newselect', function($scope,$rootScope,$ionicPopup,$location,$window) {
+.controller('newselect', function($scope ,$ionicPopup,$location,$window) {
 
 	$scope.setSelectedPost = function(title1) {
     window.localStorage.clear();
@@ -534,7 +534,7 @@ angular.module('app.controllers', [])
 
 
   // get selected post deatils ; load comments and posts
-  .controller('getSelectedpost', function($scope,$rootScope,$ionicPopup,$window){
+  .controller('getSelectedpost', function($scope ,$ionicPopup,$window){
 
 	var SelectdP=window.localStorage.getItem("settitle");
   // alert(SelectdP);
@@ -561,7 +561,7 @@ angular.module('app.controllers', [])
 
 
 //  update post controller
-.controller('postUpdateCtrl', function($scope,$rootScope,$ionicPopup,$location,$window) {
+.controller('postUpdateCtrl', function($scope ,$ionicPopup,$location,$window) {
 	var SelectdP=window.localStorage.getItem("settitle");
 	$scope.updatePost = function(title1,description) {
 
